@@ -3,8 +3,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
-import { Sidebar } from "./components/Sidebar";
-import { SidebarProvider } from "./context/SidebarContext";
+import { DashboardLayout } from "./components/layout/DashboardLayout";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,12 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <SidebarProvider>
-        <main className="flex gap-8">
-          <Sidebar />
-          {children}
-        </main>
-        </SidebarProvider>
+        <DashboardLayout>{children}</DashboardLayout>
       </body>
     </html>
   );
