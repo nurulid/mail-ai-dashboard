@@ -1,6 +1,6 @@
 "use client"
 
-import { AreaChart, CalendarMinus2, ChevronLeft,CircleHelp, FileText, LogOut, Mail, MessageCircleMore, Settings } from 'lucide-react';
+import { AreaChart, CalendarMinus2, ChevronLeft,CircleHelp, FileText, LogOut, Mail, MessageCircleMore, Moon, Settings, Sun } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
@@ -68,10 +68,23 @@ export const Sidebar = () => {
           <SidebarLink href="/settings" Icon={Settings} title='Settings' />
         </nav>
       </div>
-      <nav className='mt-auto space-y-[10px]'>
-        <SidebarLink href="/help" Icon={CircleHelp} title='Help' />
-        <SidebarLink href="/logout" Icon={LogOut} className='text-red-500' title='Logout Account' />
-      </nav>
+      <div className="mt-auto">
+        <div className={[
+          "text-gray-200 flex items-center gap-4 py-2 bg-gray-500 rounded-full",
+          isSidebarShrink ? "flex-col" : "flex-row justify-between px-4 w-[100px] mx-auto"
+          ].join(" ")}>
+          <button className="size-[28px] hover:opacity-50 rounded-full text-center">
+            <Moon size={20} className="mx-auto"/>
+          </button>
+          <button className="size-[28px] hover:opacity-50 bg-gray-800 text-white rounded-full text-center">
+            <Sun size={20} className="mx-auto"/>
+          </button>
+        </div>
+        <nav className='space-y-[10px] mt-6 pt-6 border-t border-gray-400'>
+          <SidebarLink href="/help" Icon={CircleHelp} title='Help' />
+          <SidebarLink href="/logout" Icon={LogOut} className='text-red-500' title='Logout Account' />
+        </nav>
+      </div>
       <button onClick={toggleSidebar} className={[
         "bg-gray-500 text-gray-200 border border-gray-200 rounded-md p-1 absolute -right-[14px] top-1/2 -translate-y-1/2",
         isSidebarShrink ? "rotate-180 transition-all" : ""
