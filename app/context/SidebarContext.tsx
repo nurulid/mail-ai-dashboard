@@ -14,26 +14,35 @@ interface SidebarContextType {
   toggleSidebar: VoidFunction;
 }
 
-export const SidebarContext = createContext({} as SidebarContextType);
+export const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 
 export const SidebarProvider = (props: PropsWithChildren) => {
-  const [isSidebarShrink, setIsSidebarShrink] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const savedState = localStorage.getItem('isSidebarShrink');
-      return savedState ? JSON.parse(savedState) as boolean : false;
-    }
-    return false; // Default value when localStorage is not available
-  });
-
-  const toggleSidebar = () => {
-    setIsSidebarShrink((shrink:boolean) => !shrink);
-  };
+  const [isSidebarShrink, setIsSidebarShrink] = useState<boolean>(false);
+  const [isHydrated, setIsHydrated] = useState<boolean>(false);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      const savedState = localStorage.getItem('isSidebarShrink');
+      if (savedState) {
+        setIsSidebarShrink(JSON.parse(savedState) as boolean);
+      }
+      setIsHydrated(true);
+    }
+  }, []);
+
+  const toggleSidebar = () => {
+    setIsSidebarShrink((shrink: boolean) => !shrink);
+  };
+
+  useEffect(() => {
+    if (isHydrated) {
       localStorage.setItem('isSidebarShrink', JSON.stringify(isSidebarShrink));
     }
-  }, [isSidebarShrink]);
+  }, [isSidebarShrink, isHydrated]);
+
+  if (!isHydrated) {
+    return null; // or return a loading spinner
+  }
 
   return (
     <SidebarContext.Provider
