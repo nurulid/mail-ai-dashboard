@@ -21,17 +21,17 @@ const config: Config = {
           "600": "#14173C",
           "700": "#212230",
           "800": "#090A1A",
+        },
+        accent: {
+          "blue": "#535AFF",
+          "green": "#49DD9F",
+          "red": "#535AFF",
+          "yellow": "#EF655F",
+          "dark-blue": "#462CC6",
+          "light-blue": "#E7E8FF",
         }
-      },
-      accent: {
-        "blue": "#535AFF",
-        "green": "#49DD9F",
-        "red": "#535AFF",
-        "yellow": "#EF655F",
-        "dark-blue": "#462CC6",
-        "light-blue": "#E7E8FF",
       }
-    },
+    }
   },
   plugins: [],
 };

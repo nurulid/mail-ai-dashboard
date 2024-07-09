@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 import React, { ComponentProps } from 'react'
 
 import { useSidebar } from '../context/SidebarContext';
+import { Tooltip } from './ui/Tooltip';
 
 interface SidebarLinkProps extends ComponentProps<typeof Link> {
   title: string;
@@ -24,8 +25,16 @@ const SidebarLink = (props: SidebarLinkProps) => {
       className={`text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md hover:bg-gray-500 transition-all data-[active=true]:text-white data-[active=true]:bg-gray-500 ${className}`}
       {...linkProps}
     >
-      <Icon width={24} height={24} />
-      {!isSidebarShrink && title}
+      {isSidebarShrink ? (
+        <Tooltip content={title} side='right'>
+          <Icon width={24} height={24} />
+        </Tooltip>
+      ):(
+        <>
+          <Icon width={24} height={24} />
+          title
+        </>
+      )}
     </Link>
   )
 }
