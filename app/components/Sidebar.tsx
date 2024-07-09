@@ -32,7 +32,7 @@ const SidebarLink = (props: SidebarLinkProps) => {
       ):(
         <>
           <Icon width={24} height={24} />
-          title
+          {title}
         </>
       )}
     </Link>
