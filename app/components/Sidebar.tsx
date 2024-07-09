@@ -22,11 +22,15 @@ const SidebarLink = (props: SidebarLinkProps) => {
   return (
     <Link
       data-active={pathname === props.href}
-      className={`text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md hover:bg-gray-500 transition-all data-[active=true]:text-white data-[active=true]:bg-gray-500 ${className}`}
+      className={[
+        "text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md hover:bg-gray-500 transition-all data-[active=true]:text-white data-[active=true]:bg-gray-500",
+        className,
+        isSidebarShrink ? "data-[active=true]:link-sidebar-active relative" : ""
+      ].join(" ")}
       {...linkProps}
     >
       {isSidebarShrink ? (
-        <Tooltip content={title} side='right'>
+        <Tooltip content={title} side='right' sideOffset={10}>
           <Icon width={24} height={24} />
         </Tooltip>
       ):(
@@ -66,10 +70,10 @@ export const Sidebar = () => {
       </div>
       <nav className='mt-auto space-y-[10px]'>
         <SidebarLink href="/help" Icon={CircleHelp} title='Help' />
-        <SidebarLink href="/logout" Icon={LogOut} className='text-red-500' title='Logout account' />
+        <SidebarLink href="/logout" Icon={LogOut} className='text-red-500' title='Logout Account' />
       </nav>
       <button onClick={toggleSidebar} className={[
-        "bg-gray-500 text-white border border-white rounded-md p-1 absolute -right-[14px] top-1/2 -translate-y-1/2",
+        "bg-gray-500 text-gray-200 border border-gray-200 rounded-md p-1 absolute -right-[14px] top-1/2 -translate-y-1/2",
         isSidebarShrink ? "rotate-180 transition-all" : ""
         ].join(" ")}>
         <ChevronLeft size={18} />
