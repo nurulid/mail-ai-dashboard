@@ -35,10 +35,14 @@ export const Sidebar = () => {
 
   return (
     <aside className={[
-      "bg-gray-800 h-screen p-10 flex flex-col relative",
-      isSidebarShrink ? "w-[130px]" : "w-[278px]"
+      "bg-gray-800 h-screen flex flex-col relative transition-all",
+      isSidebarShrink ? "w-[88px] p-5" : "w-[278px] p-10"
       ].join(" ")}>
-      <Image src={isSidebarShrink ? "logo-icon.svg" : "logo-jcd-ai.svg"} width={300} height={32} alt='Logo'/>
+      {isSidebarShrink ? (
+        <Image src="logo-icon.svg" width={44} height={44} alt='Logo'/>
+      ):(
+        <Image src="logo-jcd-ai.svg" width={300} height={32} alt='Logo'/>
+      )}
       <div className='mt-14'>
         <nav className="space-y-[10px]">
           <SidebarLink href="/chat" Icon={MessageCircleMore} title='Chat' />
