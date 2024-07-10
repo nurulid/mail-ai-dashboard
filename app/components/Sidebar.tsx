@@ -49,7 +49,7 @@ export const Sidebar = () => {
   return (
     <aside className={[
       "bg-gray-800 h-screen flex flex-col relative transition-all",
-      isSidebarShrink ? "w-[88px] p-5" : "w-[278px] p-10"
+      isSidebarShrink ? "w-[88px] p-5 items-center" : "w-[278px] p-10"
       ].join(" ")}>
       {isSidebarShrink ? (
         <Image src="logo-icon.svg" width={44} height={44} alt='Logo'/>
@@ -71,7 +71,7 @@ export const Sidebar = () => {
       <div className="mt-auto">
         <div className={[
           "text-gray-200 flex items-center gap-4 py-2 bg-gray-500 rounded-full",
-          isSidebarShrink ? "flex-col" : "flex-row justify-between px-4 w-[100px] mx-auto"
+          isSidebarShrink ? "flex-col w-[40px] mx-auto" : "flex-row justify-between px-2 w-[88px] h-[40px] mx-auto"
           ].join(" ")}>
           <button className="size-[28px] hover:opacity-50 rounded-full text-center">
             <Moon size={20} className="mx-auto"/>

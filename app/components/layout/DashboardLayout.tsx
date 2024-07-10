@@ -11,9 +11,11 @@ export const DashboardLayout = ({
 }) => {
   return (
     <SidebarProvider>
-      <main className="flex gap-8">
+      <main className="flex w-full h-screen">
         <Sidebar />
-        {children}
+        <div className="px-6 py-3 flex-1">
+          {children}
+        </div>
       </main>
     </SidebarProvider>
   );
