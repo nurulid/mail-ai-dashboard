@@ -19,13 +19,16 @@ const SidebarLink = (props: SidebarLinkProps) => {
   const {Icon, className = "", title, ...linkProps} = props;
   const {isSidebarShrink} = useSidebar();
   const pathname = usePathname();
+  const isUrlEmpty = props.href === "";
+  
   return (
     <Link
       data-active={pathname === props.href}
       className={[
-        "text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md hover:bg-gray-500 transition-all data-[active=true]:text-white data-[active=true]:bg-gray-500",
+        "text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md truncate transition-all data-[active=true]:text-white data-[active=true]:bg-gray-500",
         className,
-        isSidebarShrink ? "data-[active=true]:link-sidebar-active relative" : ""
+        isSidebarShrink ? "data-[active=true]:link-sidebar-active relative" : "",
+        isUrlEmpty ? "opacity-50" : "hover:bg-gray-500"
       ].join(" ")}
       {...linkProps}
     >
@@ -48,7 +51,7 @@ export const Sidebar = () => {
 
   return (
     <aside className={[
-      "bg-gray-800 h-screen flex flex-col relative transition-all",
+      "bg-gray-800 h-screen flex flex-col relative transition-all delay-50",
       isSidebarShrink ? "w-[88px] p-5 items-center" : "w-[278px] p-10"
       ].join(" ")}>
       {isSidebarShrink ? (
@@ -59,13 +62,13 @@ export const Sidebar = () => {
       <div className='mt-14'>
         <nav className="space-y-[10px]">
           <SidebarLink href="/chat" Icon={MessageCircleMore} title='Chat' />
-          <SidebarLink href="/" Icon={AreaChart} title='Income' />
-          <SidebarLink href="/schedules" Icon={CalendarMinus2} title='Schedules' />
           <SidebarLink href="/mail" Icon={Mail} title='Mail' />
-          <SidebarLink href="/documents" Icon={FileText} title='Documents' />
+          <SidebarLink href="" Icon={AreaChart} title='Income' />
+          <SidebarLink href="" Icon={CalendarMinus2} title='Schedules' />
+          <SidebarLink href="" Icon={FileText} title='Documents' />
         </nav>
         <nav className="mt-6 pt-6 border-t border-gray-400">
-          <SidebarLink href="/settings" Icon={Settings} title='Settings' />
+          <SidebarLink href="" Icon={Settings} title='Settings' />
         </nav>
       </div>
       <div className="mt-auto">
@@ -81,8 +84,8 @@ export const Sidebar = () => {
           </button>
         </div>
         <nav className='space-y-[10px] mt-6 pt-6 border-t border-gray-400'>
-          <SidebarLink href="/help" Icon={CircleHelp} title='Help' />
-          <SidebarLink href="/logout" Icon={LogOut} className='text-red-500' title='Logout Account' />
+          <SidebarLink href="" Icon={CircleHelp} title='Help' />
+          <SidebarLink href="" Icon={LogOut} className='text-red-500' title='Logout Account' />
         </nav>
       </div>
       <button onClick={toggleSidebar} className={[

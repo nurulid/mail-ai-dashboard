@@ -2,7 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {}
+@layer base {
+  body {
+    @apply text-gray-800;
+  }
+}
 
 @layer components {
   .link-sidebar-active:after {

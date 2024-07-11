@@ -5,7 +5,7 @@ import { Header } from '@/app/components/ui/Header'
 
 export default function Layout({children}: React.PropsWithChildren) {
   return (
-    <section className="flex w-full h-full">
+    <section className="flex gap-2 w-full h-full">
       <Navigation />
       <div className="flex-1">
         <Header />

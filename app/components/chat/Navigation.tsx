@@ -7,7 +7,6 @@ import React, { ComponentProps, PropsWithChildren } from "react";
 
 import { SearchInput } from "../ui/SearchInput";
 
-
 const navigationList = [
   {
     title: "Upcoming client meeting",

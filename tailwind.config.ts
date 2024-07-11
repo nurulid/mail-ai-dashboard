@@ -8,6 +8,9 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        "md": "8px",
+      },
       colors: {
         gray: {
           "20": "#f9f9f9",
