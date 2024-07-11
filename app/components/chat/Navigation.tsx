@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { ComponentProps, PropsWithChildren } from "react";
 
+import { LinkDropdown, LinkDropdownItem } from "../ui/LinkDropdown";
 import { SearchInput } from "../ui/SearchInput";
 
 const navigationList = [
@@ -43,7 +44,7 @@ const NavigationGroup = (props: PropsWithChildren<NavigationGroupProps>) => {
           {title}
         </h3>
       )}
-      {children}
+      <div className="max-h-[30vh] overflow-y-auto">{children}</div>
     </div>
   );
 };
@@ -77,7 +78,7 @@ const NavigationFolder = () => {
       <span>
         <Archive
           size={35}
-          className="inline-block rounded-md p-2 bg-gray-30 text-gray-300 mr-3"
+          className="inline-block rounded p-2 bg-gray-30 text-gray-300 mr-3"
         />{" "}
         Archive
       </span>
@@ -90,7 +91,7 @@ const NavigationFolder = () => {
 
 export const Navigation = () => {
   return (
-    <div className="w-[353px]">
+    <div className="w-[353px] h-[calc(100vh-48px)] overflow-hidden">
       <SearchInput />
       <div className="mt-8 pr-6">
         <h1 className="text-2xl font-medium">Your Chats</h1>
@@ -107,9 +108,27 @@ export const Navigation = () => {
           })}
         </NavigationGroup>
         <NavigationGroup title="Folders">
-          <NavigationFolder />
-          <NavigationFolder />
-          <NavigationFolder />
+          <LinkDropdown
+            title="Budget 2024"
+            iconColor="bg-accent-yellow"
+            isLock
+          >
+            <LinkDropdownItem href="" title="Budget 1" />
+            <LinkDropdownItem href="" title="Budget 2" />
+            <LinkDropdownItem href="" title="Budget 3" />
+          </LinkDropdown>
+          <LinkDropdown
+            title="Management"
+            iconColor="bg-accent-dark-blue"
+          >
+            <LinkDropdownItem href="" title="Programmers" />
+            <LinkDropdownItem href="" title="UI/UX" />
+          </LinkDropdown>
+          <LinkDropdown title="Clients">
+            <LinkDropdownItem href="" title="Client 1" />
+            <LinkDropdownItem href="" title="Client 2" />
+            <LinkDropdownItem href="" title="Client 3" />
+          </LinkDropdown>
         </NavigationGroup>
         <NavigationGroup>
           <NavigationFolder />
