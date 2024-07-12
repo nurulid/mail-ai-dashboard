@@ -28,7 +28,7 @@ const SidebarLink = (props: SidebarLinkProps) => {
         "text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md truncate transition-all data-[active=true]:text-white data-[active=true]:bg-gray-500",
         className,
         isSidebarShrink ? "data-[active=true]:link-sidebar-active relative" : "",
-        isUrlEmpty ? "opacity-50" : "hover:bg-gray-500"
+        isUrlEmpty ? "opacity-50 cursor-default" : "hover:bg-gray-500"
       ].join(" ")}
       {...linkProps}
     >

@@ -28,8 +28,8 @@ const config: Config = {
         accent: {
           "blue": "#535AFF",
           "green": "#49DD9F",
-          "red": "#535AFF",
-          "yellow": "#EF655F",
+          "red": "#EF655F",
+          "yellow": "#F9BC15",
           "dark-blue": "#462CC6",
           "light-blue": "#E7E8FF",
         }
