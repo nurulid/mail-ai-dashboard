@@ -14,7 +14,7 @@ export const Header = () => {
         <span className="notif__label"></span>
       </div>
       <div className="user flex items-center gap-3 px-4 ml-4 border-l-2 border-gray-50">
-        <Avatar size="sm" name={userData.name}/>
+        <Avatar size="sm" name={userData.name} imageUrl={userData.avatar}/>
         <div>
           <h3 className="text-sm text-gray-600 mr-1 inline-block">
             {userData.name}

@@ -1,6 +1,7 @@
 export function useUser() {
   return {
-    name: "John Doe",
-    email: "john@Mail.com"
+    name: "Jane Doe",
+    email: "john@Mail.com",
+    avatar: ""
   }
 }
