@@ -1,10 +1,11 @@
 "use client";
 
-import { Archive } from "lucide-react";
+import { Archive, PlusCircle } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { ComponentProps, PropsWithChildren } from "react";
 
+import { Button } from "../ui/Button";
 import { LinkDropdown, LinkDropdownItem } from "../ui/LinkDropdown";
 import { SearchInput } from "../ui/SearchInput";
 
@@ -91,7 +92,7 @@ const NavigationFolder = () => {
 
 export const Navigation = () => {
   return (
-    <div className="w-[353px] h-[calc(100vh-48px)] overflow-hidden">
+    <div className="w-[353px] h-[calc(100vh-48px)] overflow-hidden flex flex-col">
       <SearchInput />
       <div className="mt-8 pr-6">
         <h1 className="text-2xl font-medium">Your Chats</h1>
@@ -133,6 +134,9 @@ export const Navigation = () => {
         <NavigationGroup>
           <NavigationFolder />
         </NavigationGroup>
+      </div>
+      <div className="mt-auto py-6 border-t-2 border-gray-50">
+        <Button className="mx-auto"><PlusCircle size={24}/> New chat</Button>
       </div>
     </div>
   );
