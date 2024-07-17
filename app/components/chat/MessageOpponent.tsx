@@ -8,11 +8,11 @@ import {
   Share,
   Share2,
 } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 import { Avatar } from "../ui/Avatar";
 import { Checkbox } from "../ui/Checkbox";
-import Image from "next/image";
 
 const DateCard = () => {
   return (
