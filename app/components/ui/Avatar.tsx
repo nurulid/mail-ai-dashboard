@@ -16,7 +16,7 @@ export const Avatar = (props: AvatarProps) => {
   const sizePx = withUnit(+size, "px");
   return (
     <div
-      className="rounded-full overflow-hidden relative group"
+      className="rounded-full overflow-hidden relative group bg-white"
       style={{ width: sizePx, height: sizePx }}
     >
       {imageUrl ? (

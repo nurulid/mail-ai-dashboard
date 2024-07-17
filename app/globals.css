@@ -13,4 +13,8 @@
     content: "";
     @apply absolute w-1 h-full rounded-md bg-accent-blue -right-5;
   }
+
+  .button-icon {
+    @apply text-gray-200 hover:text-gray-500 transition-all;
+  }
 }

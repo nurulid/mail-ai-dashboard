@@ -22,15 +22,15 @@ const DateCard = () => {
           <CalendarMinus2 size={20} className="text-accent-blue" />
         </span>
         <div className="space-x-3 text-gray-200">
-          <button>
+          <button className="button-icon">
             <Share2 size={18} />
           </button>
-          <button>
+          <button className="button-icon">
             <Copy size={18} />
           </button>
         </div>
       </div>
-      <div className="flex justify-between text-sm text-gray-800">
+      <div className="flex justify-between gap-2 flex-wrap text-sm text-gray-800">
         <div>
           <h4 className="text-gray-300 mb-1">Start from:</h4>
           <p>August 20</p>
@@ -52,17 +52,17 @@ const MapCard = () => {
           <Map size={20} className="text-accent-blue" />
         </span>
         <div className="space-x-3 text-gray-200">
-          <button>
+          <button className="button-icon">
             <Share2 size={18} />
           </button>
-          <button>
+          <button className="button-icon">
             <Copy size={18} />
           </button>
         </div>
       </div>
-      <div className="flex justify-between text-sm text-gray-800">
+      <div className="flex justify-between gap-2 flex-wrap text-sm text-gray-800">
         <div>
-          <h4 className="text-gray-300 mb-1">Start from:</h4>
+          <h4 className="text-gray-300 mb-1">Location:</h4>
           <p>August 20</p>
         </div>
         <div>
@@ -102,7 +102,7 @@ const AttachmentCard = () => {
 export const MessageOpponent = () => {
   return (
     <div className="flex items-end justify-start gap-5 ml-4 mt-8 mb-20">
-      <Avatar size="xl" name="A I" />
+      <Avatar size="xl" name="A I" imageUrl="/user.svg"/>
       <div className="flex items-end gap-3">
         <div className="translate-y-10 space-y-[10px]">
           <div className="bg-gray-30 rounded-xl rounded-bl-none text-gray-300 max-w-[690px] w-full border-[10px] border-gray-30">
