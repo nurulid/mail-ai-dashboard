@@ -22,7 +22,7 @@ export const Button = (props: PropsWithChildren<ButtonProps>) => {
 
   const variants: Record<Color, string> = {
     primary: "bg-accent-blue text-white border-accent-blue",
-    secondary: "bg-white border border-gray-50",
+    secondary: "bg-white border",
   };
 
   return (

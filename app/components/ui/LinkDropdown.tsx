@@ -53,7 +53,7 @@ export const LinkDropdown = (
       <nav
         className={`${
           isOpen ? "flex" : "hidden"
-        } transition-all flex-col gap-1 border-l-2 border-gray-50 pl-3 ml-8 text-gray-300 text-sm`}
+        } transition-all flex-col gap-1 border-l-2 pl-3 ml-8 text-gray-300 text-sm`}
       >
         {children}
       </nav>

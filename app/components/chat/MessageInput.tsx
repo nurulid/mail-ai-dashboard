@@ -9,7 +9,7 @@ export const MessageInput = () => {
         <input type='text' placeholder='Type Message...' className='w-full py-[10px] px-2 bg-gray-30 text-gray-800 placeholder:text-gray-200 focus:outline-none'/>
       </div>
       <div className='flex items-center'>
-        <div className='flex items-center gap-3 pr-4 mr-6 border-r-2 border-gray-50'>
+        <div className='flex items-center gap-3 pr-4 mr-6 border-r-2'>
           <button className='button-icon'><ImageIcon size={24}/></button>
           <button className='button-icon'><Paperclip size={24}/></button>
         </div>

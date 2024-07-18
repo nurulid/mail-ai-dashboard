@@ -11,6 +11,9 @@ const config: Config = {
       borderRadius: {
         "md": "8px",
       },
+      borderColor: {
+        DEFAULT: '#ededed',
+      },
       colors: {
         gray: {
           "20": "#f9f9f9",

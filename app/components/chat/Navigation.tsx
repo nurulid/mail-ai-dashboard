@@ -39,7 +39,7 @@ interface NavigationGroupProps {
 const NavigationGroup = (props: PropsWithChildren<NavigationGroupProps>) => {
   const { title, children } = props;
   return (
-    <div className="pt-7 mt-6 border-t-2 border-gray-50">
+    <div className="pt-7 mt-6 border-t-2">
       {title && (
         <h3 className="text-gray-300 text-xs uppercase font-medium mb-5">
           {title}
@@ -135,7 +135,7 @@ export const Navigation = () => {
           <NavigationFolder />
         </NavigationGroup>
       </div>
-      <div className="mt-auto py-6 border-t-2 border-gray-50">
+      <div className="mt-auto py-6 border-t-2  ">
         <Button className="mx-auto"><PlusCircle size={24}/> New chat</Button>
       </div>
     </div>
