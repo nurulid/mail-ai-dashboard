@@ -1,19 +1,18 @@
 import { motion } from "framer-motion";
-import { Archive, ChevronDown, Trash2, X } from "lucide-react";
+import { Archive, ChevronDown, FileText, Trash2, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React, { CSSProperties,PropsWithChildren, useState } from "react";
+import React, { CSSProperties, PropsWithChildren, useState } from "react";
 
 import { useMessageDetails } from "@/app/context/MessageDetailsContext";
+import { useClientMeetingDetails } from "@/app/hooks/useClientMeetingDetails";
 
-const links = ["https://google.com", "https://fb.com", "https://tweet.com"];
-
-interface SectionDropdownType {
+interface SectionDropdownProps {
   title: string;
-  items: string;
+  items: number;
 }
 
-const SectionDropdown = (props: PropsWithChildren<SectionDropdownType>) => {
+const SectionDropdown = (props: PropsWithChildren<SectionDropdownProps>) => {
   const { title, items, children } = props;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -41,16 +40,36 @@ const SectionDropdown = (props: PropsWithChildren<SectionDropdownType>) => {
   );
 };
 
+interface FileProps {
+  file: string;
+  size: string;
+  date: string;
+}
+
+const File = (props: FileProps) => {
+  const {file, size, date} = props;
+  return (
+    <div className="text-gray-300 p-[10px] border rounded-md mb-2 last:mb-0">
+      <p className="text-sm mb-[10px]"><FileText size={14} className="inline-block"/> {file}</p>
+      <div className="text-xs flex justify-between items-center">
+        <span>{size}</span>
+        <span>{date}</span>
+      </div>
+    </div>
+  )
+}
+
 export const Details = () => {
   const { toggleDetails } = useMessageDetails();
+  const messageData = useClientMeetingDetails();
   return (
     <motion.div
       initial={{ opacity: 0, x: 100 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", duration: 0.3 }}
-      exit={{ opacity: 1, x: 300 }}
+      transition={{ type: "spring", duration: 1 }}
+      exit={{ opacity: 1, x: 0 }}
       style={{ "--padd": "24px" } as CSSProperties}
-      className="w-[259px] border rounded-md border-gray-50 flex flex-col"
+      className="w-[259px] border rounded-md   flex flex-col"
     >
       <div className="p-[--padd]">
         <div className="flex justify-between items-center">
@@ -65,15 +84,15 @@ export const Details = () => {
             height={68}
             src="/user.svg"
             alt="AI"
-            className="rounded-full border border-gray-50"
+            className="rounded-full border  "
           />
           <h3 className="text-[22px] font-semibold">JCD.AI</h3>
-          <p className="text-gray-300">Creation: 28 June, 10:59</p>
+          <p className="text-gray-300 text-xs">Creation: 28 June, 10:59</p>
         </div>
       </div>
-      <SectionDropdown title="Links" items={links.length.toString()}>
+      <SectionDropdown title="Links" items={messageData.links.length}>
         <ul>
-          {links.map((link, index) => {
+          {messageData.links.map((link, index) => {
             return (
               <li key={index} className="text-sm text-gray-300 py-2">
                 <Link href={link} className="hover:underline">
@@ -84,15 +103,36 @@ export const Details = () => {
           })}
         </ul>
       </SectionDropdown>
-      <SectionDropdown title="Media" items="4"></SectionDropdown>
-      <SectionDropdown title="Files" items="4"></SectionDropdown>
-      <SectionDropdown title="Tags" items="4"></SectionDropdown>
+      <SectionDropdown title="Media" items={messageData.media.length}>
+        <div className="grid grid-cols-3 gap-3">
+          {messageData.media.map((item, index) => {
+              return (
+                <Image
+                  key={index}
+                  src={item}
+                  width={60}
+                  height={60}
+                  alt="media item"
+                  className="object-cover w-full h-full"
+                />
+              );
+            })}
+        </div>
+      </SectionDropdown>
+      <SectionDropdown title="Files" items={messageData.attachments.length}>
+        {messageData.attachments.map((attachment, index) => {
+          return (
+            <File key={index} file={attachment.file} size={attachment.size} date={attachment.date}/>
+          )
+        })}
+      </SectionDropdown>
+      <SectionDropdown title="Tags" items={messageData.tags.length}></SectionDropdown>
       <nav className="p-[--padd] grid gap-4 mt-auto border-t text-sm">
         <button className="flex gap-2 items-center hover:opacity-70">
-          <Archive className="text-gray-300" size={24}/> Add to Archive
+          <Archive className="text-gray-300" size={24} /> Add to Archive
         </button>
         <button className="flex gap-2 items-center text-accent-red hover:opacity-70">
-          <Trash2 size={24}/> Deleted to chat
+          <Trash2 size={24} /> Deleted to chat
         </button>
       </nav>
     </motion.div>
