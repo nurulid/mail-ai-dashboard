@@ -9,7 +9,7 @@ interface NewChatActionProps {
 const NewChatAction = (props: NewChatActionProps) => {
   const {Icon, title} = props;
   return (
-    <div className='flex items-center gap-3 bg-white p-6 rounded-md hover:bg-gray-20 transition-all cursor-pointer pr-20'>
+    <div className='flex items-center gap-3 bg-white p-6 rounded-md hover:bg-gray-20 transition-all cursor-pointer pr-16'>
       <span className='p-2 bg-gray-30 rounded-md'>
       <Icon width={30} height={30} className='text-accent-blue'/></span>
       <span className='text-sm'>{title}</span>

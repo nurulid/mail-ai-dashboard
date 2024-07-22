@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import React, { ComponentProps, PropsWithChildren } from "react";
 
 import { PageSidebar } from "../PageSidebar";
-import { Button } from "../ui/Button";
+import { LinkBtn } from "../ui/Button";
 import { LinkDropdown, LinkDropdownItem } from "../ui/LinkDropdown";
 import { SearchInput } from "../ui/SearchInput";
 
@@ -37,7 +37,9 @@ interface NavigationGroupProps {
   title?: string;
 }
 
-const NavigationGroup = (props: PropsWithChildren<NavigationGroupProps>) => {
+export const NavigationGroup = (
+  props: PropsWithChildren<NavigationGroupProps>
+) => {
   const { title, children } = props;
   return (
     <div className="pt-7 mt-6 border-t-2">
@@ -46,7 +48,7 @@ const NavigationGroup = (props: PropsWithChildren<NavigationGroupProps>) => {
           {title}
         </h3>
       )}
-      <div className="max-h-[30vh] overflow-y-auto">{children}</div>
+      <nav className="max-h-[30vh] overflow-y-auto">{children}</nav>
     </div>
   );
 };
@@ -71,7 +73,7 @@ const NavigationLink = (props: NavigationLinkProps) => {
   );
 };
 
-const NavigationFolder = () => {
+export const NavigationFolder = () => {
   return (
     <Link
       href="/"
@@ -94,7 +96,7 @@ const NavigationFolder = () => {
 export const Navigation = () => {
   return (
     <PageSidebar>
-      <div className="px-6 pt-3">
+      <div className="px-6">
         <SearchInput />
         <div className="mt-8">
           <h1 className="text-2xl font-medium">Your Chats</h1>
@@ -120,10 +122,7 @@ export const Navigation = () => {
               <LinkDropdownItem href="" title="Budget 2" />
               <LinkDropdownItem href="" title="Budget 3" />
             </LinkDropdown>
-            <LinkDropdown
-              title="Management"
-              iconColor="bg-accent-dark-blue"
-            >
+            <LinkDropdown title="Management" iconColor="bg-accent-dark-blue">
               <LinkDropdownItem href="" title="Programmers" />
               <LinkDropdownItem href="" title="UI/UX" />
             </LinkDropdown>
@@ -138,8 +137,10 @@ export const Navigation = () => {
           </NavigationGroup>
         </div>
       </div>
-      <div className="mt-auto py-6 border-t-2  ">
-        <Button className="mx-auto"><PlusCircle size={24}/> New chat</Button>
+      <div className="mt-auto text-center py-6 border-t-2  ">
+        <LinkBtn href="/chat/new" className="mx-auto">
+          <PlusCircle size={24} /> New chat
+        </LinkBtn>
       </div>
     </PageSidebar>
   );
