@@ -8,7 +8,7 @@ import { Avatar } from './Avatar';
 export const Header = () => {
   const userData = useUser();
   return (
-    <header className="flex justify-end items-center pt-2 pb-5 px-6">
+    <header className="flex justify-end items-center py-5 px-6">
       <div className="relative text-gray-200">
         <Bell />
         <span className="notif__label"></span>

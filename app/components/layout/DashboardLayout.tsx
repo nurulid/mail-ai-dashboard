@@ -13,7 +13,7 @@ export const DashboardLayout = ({
     <SidebarProvider>
       <main className="flex w-full h-screen">
         <Sidebar />
-        <div className="px-6 py-3 flex-1">
+        <div className="flex-1">
           {children}
         </div>
       </main>

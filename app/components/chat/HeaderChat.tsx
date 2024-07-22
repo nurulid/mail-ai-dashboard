@@ -5,7 +5,7 @@ import React from 'react'
 
 import { useMessageDetails } from '@/app/context/MessageDetailsContext'
 
-export const Header = () => {
+export const HeaderChat = () => {
   const {isDetailsOpen, toggleDetails} = useMessageDetails();
   return (
     <div className='py-[10px] px-[30px] flex justify-between items-center flex-wrap gap-2 shadow bg-white rounded-md sticky top-0 right-0 left-0 z-10'>
