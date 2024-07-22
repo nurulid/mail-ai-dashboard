@@ -1,6 +1,6 @@
 "use client"
 
-import { AreaChart, CalendarMinus2, ChevronLeft,CircleHelp, FileText, LogOut, Mail, MessageCircleMore, Moon, Settings, Sun } from 'lucide-react';
+import { AreaChart, CalendarMinus2, ChevronLeft,CircleHelp, FileText, LogOut, Mail, MessageCircleMore, Moon, PlusCircle, Settings, Sun, ToyBrick } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation';
@@ -54,13 +54,16 @@ export const Sidebar = () => {
       "bg-gray-800 h-screen flex flex-col relative transition-all delay-50",
       isSidebarShrink ? "w-[88px] p-5 items-center" : "w-[278px] p-10"
       ].join(" ")}>
-      {isSidebarShrink ? (
-        <Image src="logo-icon.svg" width={44} height={44} alt='Logo'/>
-      ):(
-        <Image src="logo-jcd-ai.svg" width={300} height={32} alt='Logo'/>
-      )}
+      <Link href="/">
+        {isSidebarShrink ? (
+          <Image src="/logo-icon.svg" width={44} height={44} alt='Logo'/>
+        ):(
+          <Image src="/logo-jcd-ai.svg" width={300} height={32} alt='Logo'/>
+        )}
+      </Link>
       <div className='mt-14'>
         <nav className="space-y-[10px]">
+          <SidebarLink href="/chat/new" Icon={PlusCircle} title='New Chat' />
           <SidebarLink href="/chat" Icon={MessageCircleMore} title='Chat' />
           <SidebarLink href="/mail" Icon={Mail} title='Mail' />
           <SidebarLink href="" Icon={AreaChart} title='Income' />
@@ -68,6 +71,7 @@ export const Sidebar = () => {
           <SidebarLink href="" Icon={FileText} title='Documents' />
         </nav>
         <nav className="mt-6 pt-6 border-t border-gray-400">
+          <SidebarLink href="/components" Icon={ToyBrick} title='Components'/>
           <SidebarLink href="" Icon={Settings} title='Settings' />
         </nav>
       </div>
