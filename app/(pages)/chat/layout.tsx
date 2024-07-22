@@ -1,16 +1,10 @@
 import React from 'react'
 
-import { Navigation } from '@/app/components/chat/Navigation'
-import { Header } from '@/app/components/ui/Header'
+import { ChatLayout } from '@/app/components/layout/ChatLayout'
 
 export default function Layout({children}: React.PropsWithChildren) {
   return (
-    <section className="flex gap-2 w-full h-full">
-      <Navigation />
-      <div className="flex-1">
-        <Header />
-        {children}
-      </div>
-    </section>
+    <ChatLayout>{children}</ChatLayout>
+        
   )
 }
