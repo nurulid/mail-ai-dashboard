@@ -19,17 +19,17 @@ const navigationList = [
   {
     title: "Company performance statisfy",
     time: "June 12",
-    url: "/",
+    url: "",
   },
   {
     title: "Effective Communication in Virtual Teams",
     time: "June 17",
-    url: "/mail",
+    url: "",
   },
   {
     title: "Planning the Next IT Project",
     time: "June 17",
-    url: "/c",
+    url: "",
   },
 ];
 
@@ -48,7 +48,7 @@ export const NavigationGroup = (
           {title}
         </h3>
       )}
-      <nav className="max-h-[30vh] overflow-y-auto">{children}</nav>
+      <nav className="max-h-[25vh] overflow-y-auto">{children}</nav>
     </div>
   );
 };
