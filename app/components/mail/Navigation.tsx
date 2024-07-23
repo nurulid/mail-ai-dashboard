@@ -1,5 +1,8 @@
+"use client"
+
 import { File, Mail, Pencil, Send, Star } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { ComponentProps } from "react";
 
 import { NavigationFolder, NavigationGroup } from "../chat/Navigation";
@@ -12,24 +15,27 @@ interface FolderMenuProps extends ComponentProps<typeof Link> {
   title: string;
   count: number;
   unread?: number;
-  isActive?: boolean;
 }
 
 const FolderMenu = (props: FolderMenuProps) => {
-  const { Icon, title, count, unread, isActive = false, ...linkProps } = props;
+  const { Icon, title, count, unread, ...linkProps } = props;
+  const pathname = usePathname();
   return (
     <Link
+      data-active={pathname === props.href}
       {...linkProps}
-      className={`flex items-center gap-4 py-3 px-4 rounded transition-all ${
-        isActive ? "bg-gray-30" : "hover:opacity-70"
-      }`}
+      className={[
+        "group flex items-center gap-4 py-3 px-4 rounded",
+        "transition-all hover:opacity-70",
+        "data-[active=true]:bg-gray-30"
+      ].join(" ")}
     >
       <Icon
         width={35}
         height={35}
         className={[
-          "p-2 bg-gray-30 rounded",
-          isActive ? "text-accent-blue" : "text-gray-300",
+          "p-2 bg-gray-30 rounded text-gray-300",
+          "group-data-[active=true]:text-accent-blue"
         ].join(" ")}
       />
       <h3 className="text-base">{title}</h3>
@@ -37,8 +43,8 @@ const FolderMenu = (props: FolderMenuProps) => {
         {unread ? <span className="text-gray-500">+{unread}</span> : null}
         <span
           className={[
-            "inline-block ml-2 p-2 rounded-full",
-            isActive ? "bg-accent-blue text-white" : "bg-gray-30 text-gray-300",
+            "inline-block ml-2 p-2 rounded-full bg-gray-30 text-gray-300",
+            "group-data-[active=true]:bg-accent-blue group-data-[active=true]:text-white"
           ].join(" ")}
         >
           {count}
@@ -59,14 +65,13 @@ export const Navigation = () => {
           </h1>
           <NavigationGroup>
             <FolderMenu
-              href=""
+              href="/mail/inbox/1"
               title="Inbox"
               count={1293}
               Icon={Mail}
               unread={3}
-              isActive
             />
-            <FolderMenu href="" title="Send" count={145} Icon={Send} />
+            <FolderMenu href="/mail/send/1" title="Send" count={145} Icon={Send} />
             <FolderMenu href="" title="Starred" count={67} Icon={Star} />
             <FolderMenu href="" title="Draft" count={4} Icon={File} />
           </NavigationGroup>
