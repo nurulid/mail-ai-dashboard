@@ -64,12 +64,16 @@ export const Details = () => {
   const messageData = useClientMeetingDetails();
   return (
     <motion.div
-      initial={{ opacity: 0, x: 100 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ type: "spring", duration: 1 }}
-      exit={{ opacity: 1, x: 0 }}
+      variants={{
+        hidden: { width: 0, opacity: 0 },
+        visible: { width: '259px', opacity: 1 }
+      }}
+      initial="hidden"
+      animate="visible"
+      exit="hidden"
+      transition={{ duration: 0.15 }}
       style={{ "--padd": "24px" } as CSSProperties}
-      className="w-[259px] border rounded-md   flex flex-col"
+      className="border rounded-md flex flex-col"
     >
       <div className="p-[--padd]">
         <div className="flex justify-between items-center">
