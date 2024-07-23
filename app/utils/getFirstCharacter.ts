@@ -1,4 +1,4 @@
-export function getFirstCharacter(names: string) {
+export default function getFirstCharacter(names: string) {
   return names
     .split(" ")
     .map((word) => word.charAt(0))
