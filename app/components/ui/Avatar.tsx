@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { withUnit } from "@/app/utils/withUnit";
+import { withUnit } from "@/app/utils";
 
 const sizes = { xl: 58, lg: 40, md: 38, sm: 32 };
 

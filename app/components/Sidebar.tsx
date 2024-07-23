@@ -1,5 +1,6 @@
 "use client"
 
+import { motion } from 'framer-motion';
 import { AreaChart, CalendarMinus2, ChevronLeft,CircleHelp, FileText, LogOut, Mail, MessageCircleMore, Moon, PlusCircle, Settings, Sun, ToyBrick } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link'
@@ -8,7 +9,6 @@ import React, { ComponentProps } from 'react'
 
 import { useSidebar } from '../context/SidebarContext';
 import { Tooltip } from './ui/Tooltip';
-import { motion } from 'framer-motion';
 
 interface SidebarLinkProps extends ComponentProps<typeof Link> {
   title: string;
