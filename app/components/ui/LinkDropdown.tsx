@@ -1,9 +1,10 @@
 "use client"
 
+import {AnimatePresence, motion} from 'framer-motion';
 import { ChevronDown, Circle, Folder, Lock } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { ComponentProps, PropsWithChildren, useState } from 'react'
+import React, { ComponentProps, PropsWithChildren, useState } from 'react';
 
 interface LinkDropdownProps {
   title: string;
@@ -20,6 +21,7 @@ export const LinkDropdown = (
   const toggleNav = () => {
     setIsOpen((open) => !open);
   };
+
   return (
     <div className="mb-2">
       <div
@@ -46,17 +48,27 @@ export const LinkDropdown = (
             size={18}
             className={`${
               isOpen ? "rotate-180" : ""
-            } text-gray-300 transition-all inline-block`}
+            } text-gray-300 transition-all delay-100 inline-block`}
           />
         </span>
       </div>
-      <nav
-        className={`${
-          isOpen ? "flex" : "hidden"
-        } transition-all flex-col gap-1 border-l-2 pl-3 ml-8 text-gray-300 text-sm`}
-      >
-        {children}
-      </nav>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.nav
+            variants={{
+              hidden: { height: 0, opacity: 0 },
+              visible: { height: 'auto', opacity: 1 }
+            }}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            transition={{ duration: 0.2 }}
+            className="grid gap-1 border-l-2 pl-3 ml-8 text-gray-300 text-sm"
+          >
+            {children}
+          </motion.nav>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -72,7 +84,7 @@ export const LinkDropdownItem = (props: LinkDropdownItemProps) => {
   return (
     <Link
       data-active={pathname === props.href}
-      className="py-2 px-3"
+      className="py-2 px-3 inline-block"
       {...linkProps}
     >
       <Circle size={10} className="inline-block mr-3" /> {title}
