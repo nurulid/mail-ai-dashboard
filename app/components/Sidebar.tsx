@@ -8,6 +8,7 @@ import React, { ComponentProps } from 'react'
 
 import { useSidebar } from '../context/SidebarContext';
 import { Tooltip } from './ui/Tooltip';
+import { motion } from 'framer-motion';
 
 interface SidebarLinkProps extends ComponentProps<typeof Link> {
   title: string;
@@ -50,7 +51,10 @@ export const Sidebar = () => {
   const {isSidebarShrink, toggleSidebar} = useSidebar();
 
   return (
-    <aside className={[
+    <motion.aside
+      animate={{width: isSidebarShrink ? "88px" : "278px"}}
+      transition={{ duration: 0.19 }}
+     className={[
       "bg-gray-800 h-screen flex flex-col relative transition-all delay-50",
       isSidebarShrink ? "w-[88px] p-5 items-center" : "w-[278px] p-10"
       ].join(" ")}>
@@ -98,6 +102,6 @@ export const Sidebar = () => {
         ].join(" ")}>
         <ChevronLeft size={18} />
       </button>
-    </aside>
+    </motion.aside>
   )
 }
