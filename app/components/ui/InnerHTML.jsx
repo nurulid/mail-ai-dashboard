@@ -1,7 +1,9 @@
 import React from "react";
 
 function createMarkup(html) {
+  /* eslint-disable */
   return { __html: html };
+  /* eslint-disable */
 }
 
 export const InnerHTML = ({ text }) => {

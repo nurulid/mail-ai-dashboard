@@ -16,7 +16,7 @@ export const MailLabel = (props: MailLabelProps) => {
     >
       {label ? (
         <>
-          <span className="w-[8px] h-[8px] rounded-full bg-gray-800"></span>
+          <span className="w-[8px] h-[8px] rounded-full bg-gray-300"></span>
           {capitalizeFirstLetter(label)}
         </>
       ): null}
