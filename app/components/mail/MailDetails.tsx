@@ -26,7 +26,7 @@ const mail = {
   avatar: "/images/christopher-campbell-rDEOVtE7vOs-unsplash.jpeg",
   time: "2024-03-13T04:15:00Z",
   title: "Completed tasks",
-  desc: "Dear Alexandra, <br/> I hope this email finds you well. I am writing to inform you that we have scheduled a business meeting to discuss collaboration opportunities and the signing of the contract. We are excited to take this next step in our partnership. <br/> Please let us know if you have any specific topics or documents you would like to discuss during the meeting. <br/> <br/> Sincerely,<br/> Leslie Alexander",
+  desc: "Dear Alexandra, <br/> <br/> I hope this email finds you well. I am writing to inform you that we have scheduled a business meeting to discuss collaboration opportunities and the signing of the contract. We are excited to take this next step in our partnership. <br/> Please let us know if you have any specific topics or documents you would like to discuss during the meeting. <br/> <br/> Sincerely,<br/> Leslie Alexander",
   isRead: true,
   isStarred: false,
   attachment: [
@@ -79,32 +79,34 @@ const MailMenu = () => {
 const MailSender = () => {
   return (
     <div className="p-[--padd] border-b">
-      <div className="flex gap-3 items-center mb-6">
-        <figure className="w-[40px] h-[40px] rounded-full bg-mailOrange text-white text-[18px] text-center leading-[40px]">
-          {mail.avatar ? (
-            <Image
-              width={40}
-              height={40}
-              src={mail.avatar}
-              alt="user avatar"
-              className="rounded-full object-cover w-full h-full"
-            />
-          ) : (
-            getFirstCharacter(mail.user)
-          )}
-        </figure>
-        <div>
-          <h4 className="text-sm font-semibold">{mail.user}</h4>
-          <p className="text-xs text-gray-300">{mail.email}</p>
+      <div className="flex flex-wrap justify-between gap-y-2 gap-3 items-center mb-6">
+        <div className="flex gap-3">
+          <figure className="w-[40px] h-[40px] rounded-full bg-mailOrange text-white text-[18px] text-center leading-[40px]">
+            {mail.avatar ? (
+              <Image
+                width={40}
+                height={40}
+                src={mail.avatar}
+                alt="user avatar"
+                className="rounded-full object-cover w-full h-full"
+              />
+            ) : (
+              getFirstCharacter(mail.user)
+            )}
+          </figure>
+          <div>
+            <h4 className="text-sm font-semibold">{mail.user}</h4>
+            <p className="text-xs text-gray-300">{mail.email}</p>
+          </div>
         </div>
-        <div className="ml-auto relative">
+        <div className="relative">
           <p className="text-xs mr-5">
             <span>{formatMonthDay(mail.time)},</span>
             <span className="text-gray-300"> {formatTime(mail.time)}</span>
           </p>
         </div>
       </div>
-      <div className="flex gap-6 text-xs">
+      <div className="flex flex-wrap gap-y-2 gap-6 text-xs">
         <div>
           <span className="text-gray-300 mr-2">From:</span>
           <span>{mail.company}</span>
@@ -121,7 +123,7 @@ const MailSender = () => {
 const MailContent = () => {
   return (
     <div className="py-5 px-[--padd]">
-      <div className="flex items-center justify-between mb-5">
+      <div className="flex items-center justify-between flex-wrap gap-y-2 mb-5">
         <div className="space-x-2">
           {mail.label.map((item, i) => {
             return <MailLabel key={i} label={item} />;
@@ -135,7 +137,7 @@ const MailContent = () => {
           Brief summary
         </Button>
       </div>
-      <div className="w-[85%]">
+      <div className="w-[95%]">
         <h2 className="text-2xl font-semibold mb-4">{mail.title}</h2>
         <div>
           <InnerHTML text={mail.desc} />
@@ -147,9 +149,9 @@ const MailContent = () => {
 
 const MailAttachments = () => {
   return (
-    <div className="px-[--padd] text-gray-300">
+    <div className="px-[--padd] mb-5">
       <h3 className="mb-3">Attachments</h3>
-      <div className="grid grid-cols-2 gap-[10px]">
+      <div className="grid grid-cols-2 gap-[10px] text-gray-300 ">
         {mail.attachment.map((item, i) => (
           <div
             key={i}
@@ -193,7 +195,7 @@ const MailActions = () => {
 
 export const MailDetails = () => {
   return (
-    <section style={{"--padd": "30px"} as CSSProperties}>
+    <section style={{"--padd": "30px"} as CSSProperties} className="min-w-[400px] w-full">
       <div className="sticky top-0">
         <MailMenu />
       </div>
