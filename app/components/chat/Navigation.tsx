@@ -97,7 +97,7 @@ export const Navigation = () => {
   return (
     <PageSidebar>
       <div className="px-6">
-        <SearchInput />
+        <SearchInput isCommand/>
         <div className="mt-8">
           <h1 className="text-2xl font-medium">Your Chats</h1>
           <NavigationGroup title="Recent">
