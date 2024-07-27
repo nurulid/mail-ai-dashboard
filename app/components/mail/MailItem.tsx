@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 import { formatMonthDay, formatTime,getFirstCharacter } from "@/app/utils";
@@ -22,10 +23,10 @@ interface MailItemProps {
 export const MailItem = (props: MailItemProps) => {
   const { user, email, avatar, time, title, desc, isRead, isStarred, attachment, label, } = props;
   return (
-    <div className="transition-all">
+    <div className="relative hover:bg-gray-20/80 transition-all">
       <div className="flex py-6 mx-6 border-b-2">
         <div className="w-[30px]">
-          <input type="checkbox" />
+          <input type="checkbox" className="relative z-[2]"/>
         </div>
         <div className="w-[calc(100%-30px)]">
           <div className="flex gap-3 items-center mb-3">
@@ -49,8 +50,8 @@ export const MailItem = (props: MailItemProps) => {
                 <span>{formatMonthDay(time)},</span>
                 <span className="text-gray-300"> {formatTime(time)}</span>
               </p>
-              {isRead ? null : (
-                <span className="w-[9px] h-[9px] rounded-full bg-mailOrange inline-block absolute right-0 top-1/2 -translate-y-1/2"></span>
+              {!isRead && (
+                <span className="w-[9px] h-[9px] rounded-full bg-accent-red inline-block absolute right-0 top-1/2 -translate-y-1/2"></span>
               )}
             </div>
           </div>
@@ -79,6 +80,7 @@ export const MailItem = (props: MailItemProps) => {
           )}
         </div>
       </div>
+      <Link href="" className="absolute inset-0 z-[1]"/>
     </div>
   );
 };

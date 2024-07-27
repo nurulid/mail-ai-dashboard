@@ -20,15 +20,17 @@ const SidebarLink = (props: SidebarLinkProps) => {
   const {Icon, className = "", title, ...linkProps} = props;
   const {isSidebarShrink} = useSidebar();
   const pathname = usePathname();
+  const pathParent = pathname.split("/").slice(0, 3).join("/");
   const isUrlEmpty = props.href === "";
-  
+  console.log(pathParent)
   return (
     <Link
-      data-active={pathname === props.href}
+      data-active={pathname === props.href || pathParent === props.href}
       className={[
-        "text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md truncate transition-all data-[active=true]:text-white data-[active=true]:bg-gray-500",
+        "text-gray-200 flex items-center gap-3 py-[10px] px-3 rounded-md transition-all", 
+        "data-[active=true]:text-white data-[active=true]:bg-gray-500",
         className,
-        isSidebarShrink ? "data-[active=true]:link-sidebar-active relative" : "",
+        isSidebarShrink ? "data-[active=true]:link-sidebar-active relative" : "truncate",
         isUrlEmpty ? "opacity-50 cursor-default" : "hover:bg-gray-500"
       ].join(" ")}
       {...linkProps}
@@ -49,7 +51,8 @@ const SidebarLink = (props: SidebarLinkProps) => {
 
 export const Sidebar = () => {
   const {isSidebarShrink, toggleSidebar} = useSidebar();
-
+  const pathname = usePathname();
+  const pathParent = pathname.split("/").slice(0, 2).join("/");
   return (
     <motion.aside
       animate={{width: isSidebarShrink ? "88px" : "278px"}}
@@ -69,7 +72,7 @@ export const Sidebar = () => {
         <nav className="space-y-[10px]">
           <SidebarLink href="/chat/new" Icon={PlusCircle} title='New Chat' />
           <SidebarLink href="/chat" Icon={MessageCircleMore} title='Chat' />
-          <SidebarLink href="/mail" Icon={Mail} title='Mail' />
+          <SidebarLink data-active={pathParent === "/mail"} href="/mail/inbox" Icon={Mail} title='Mail' />
           <SidebarLink href="" Icon={AreaChart} title='Income' />
           <SidebarLink href="" Icon={CalendarMinus2} title='Schedules' />
           <SidebarLink href="" Icon={FileText} title='Documents' />

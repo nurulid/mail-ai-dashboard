@@ -12,7 +12,7 @@ export const MailList = () => {
     <div className="w-[430px] border border-x-1 border-y-0 relative">
       {/* mail header */}
       <div className="px-6">
-        <div className="flex justify-between py-8 mb-3 border-b-2">
+        <div className="flex justify-between py-8 mb-2 border-b-2">
           {/* mail title */}
           <h2 className="text-xl font-semibold">
             Inbox
@@ -34,7 +34,7 @@ export const MailList = () => {
           </div>
         </div>
         {/* mail search */}
-        <SearchInput />
+        <SearchInput placeholder="Search messages..." />
       </div>
       {/* mail list */}
       <div className="h-[calc(100vh-154px)] overflow-auto">

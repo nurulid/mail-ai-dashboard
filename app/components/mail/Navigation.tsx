@@ -58,7 +58,7 @@ export const Navigation = () => {
   return (
     <PageSidebar>
       <div className="px-6">
-        <SearchInput />
+        <SearchInput isCommand/>
         <div className="mt-8">
           <h1 className="text-2xl font-medium flex items-center gap-[10px]">
             Mail <span className="text-gray-300 text-[16px]">(1541)</span>
