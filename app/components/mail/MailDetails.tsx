@@ -13,7 +13,7 @@ import {
 import Image from "next/image";
 import React, { CSSProperties } from "react";
 
-import { InnerHTML } from "@/app/components/ui/innerHTML";
+import { InnerHTML } from "@/app/components/ui/InnerHTML";
 import { formatMonthDay, formatTime,getFirstCharacter } from "@/app/utils";
 
 import { Button } from "../ui/Button";
