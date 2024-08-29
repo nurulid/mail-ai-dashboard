@@ -1,6 +1,7 @@
 export function useMailInbox() {
   return [
     {
+      id: "8483",
       user: "Nurul",
       email: "call.nurulid@gmail.com",
       avatar: "/images/nid.jpeg",
@@ -11,8 +12,11 @@ export function useMailInbox() {
       isStarred: false,
       attachment: ["file.pdf", "pic.png"],
       label: ["meet", "bussiness"],
+      company: "Lesliecompany",
+      to: ["Alexandra Nowak", "Victor Mickiewicz"],
     },
     {
+      id: "8322",
       user: "Annette Black",
       email: "black.annete@gmail.com",
       avatar: "",
@@ -23,8 +27,11 @@ export function useMailInbox() {
       isStarred: true,
       attachment: [],
       label: ["team"],
+      company: "Lesliecompany",
+      to: ["Alexandra Nowak", "Victor Mickiewicz"],
     },
     {
+      id: "6474",
       user: "Leslie Alexander",
       email: "leslie1209@gmail.com",
       avatar: "/images/christopher-campbell-rDEOVtE7vOs-unsplash.jpeg",
@@ -35,8 +42,11 @@ export function useMailInbox() {
       isStarred: false,
       attachment: ["file.pdf", "file.doc"],
       label: ["Meet", "Bussiness"],
+      company: "Lesliecompany",
+      to: ["Alexandra Nowak", "Victor Mickiewicz"],
     },
     {
+      id: "5324",
       user: "Cody Fisher",
       email: "fffish.cody1@gmail.com",
       avatar: "/images/alexander-hipp-iEEBWgY_6lA-unsplash.jpg",
@@ -47,8 +57,11 @@ export function useMailInbox() {
       isStarred: false,
       attachment: [],
       label: [],
+      company: "Lesliecompany",
+      to: ["Alexandra Nowak", "Victor Mickiewicz"],
     },
     {
+      id: "9373",
       user: "Is.graphics",
       email: "Is.graphics@gmail.com",
       avatar: "/images/vicky-hladynets-C8Ta0gwPbQg-unsplash.jpeg",
@@ -59,8 +72,11 @@ export function useMailInbox() {
       isStarred: true,
       attachment: [],
       label: [],
+      company: "Lesliecompany",
+      to: ["Alexandra Nowak", "Victor Mickiewicz"],
     },
     {
+      id: "5521",
       user: "Is.graphics",
       email: "Is.graphics@gmail.com",
       avatar: "/images/vicky-hladynets-C8Ta0gwPbQg-unsplash.jpeg",
@@ -71,6 +87,8 @@ export function useMailInbox() {
       isStarred: true,
       attachment: [],
       label: [],
+      company: "Lesliecompany",
+      to: ["Alexandra Nowak", "Victor Mickiewicz"],
     },
   ];
 } 
