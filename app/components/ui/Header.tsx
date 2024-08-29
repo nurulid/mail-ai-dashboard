@@ -18,7 +18,14 @@ export const Header = () => {
         />
       </div>
       <div className="user flex items-center gap-3 px-4 ml-4 border-l-2">
-        <Avatar size="sm" name={userData.name} imageUrl={userData.avatar} />
+        <div className="relative">
+          <Avatar size="sm" name={userData.name} imageUrl={userData.avatar} />
+          <Dot
+            className="absolute top-1 -right-4 z-10"
+            size={40}
+            color="#49DD9F"
+          />
+        </div>
         <div>
           <h3 className="text-sm text-gray-600 mr-1 inline-block relative">
             {userData.name}

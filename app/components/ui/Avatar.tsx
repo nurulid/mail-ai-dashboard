@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { withUnit } from "@/app/utils";
-import { Dot } from "lucide-react";
 
 const sizes = { xl: 58, lg: 40, md: 38, sm: 32 };
 
@@ -37,7 +36,6 @@ export const Avatar = (props: AvatarProps) => {
           </div>
         )}
       </div>
-      <Dot className="absolute top-1 -right-4 z-10" size={40} color="#49DD9F" />
     </div>
   );
 };
