@@ -5,6 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { ComponentProps, PropsWithChildren } from "react";
 
+import { DropdownProvider } from "@/app/context/DropdownContext";
+
 import { PageSidebar } from "../PageSidebar";
 import { LinkBtn } from "../ui/Button";
 import { LinkDropdown, LinkDropdownItem } from "../ui/LinkDropdown";
@@ -95,53 +97,55 @@ export const NavigationFolder = () => {
 
 export const Navigation = () => {
   return (
-    <PageSidebar>
-      <div className="px-6">
-        <SearchInput isCommand/>
-        <div className="mt-8">
-          <h1 className="text-2xl font-medium">Your Chats</h1>
-          <NavigationGroup title="Recent">
-            {navigationList.map((nav, index) => {
-              return (
-                <NavigationLink
-                  key={index}
-                  title={nav.title}
-                  time={nav.time}
-                  href={nav.url}
-                />
-              );
-            })}
-          </NavigationGroup>
-          <NavigationGroup title="Folders">
-            <LinkDropdown
-              title="Budget 2024"
-              iconColor="bg-accent-yellow"
-              isLock
-            >
-              <LinkDropdownItem href="" title="Budget 1" />
-              <LinkDropdownItem href="" title="Budget 2" />
-              <LinkDropdownItem href="" title="Budget 3" />
-            </LinkDropdown>
-            <LinkDropdown title="Management" iconColor="bg-accent-dark-blue">
-              <LinkDropdownItem href="" title="Programmers" />
-              <LinkDropdownItem href="" title="UI/UX" />
-            </LinkDropdown>
-            <LinkDropdown title="Clients">
-              <LinkDropdownItem href="" title="Client 1" />
-              <LinkDropdownItem href="" title="Client 2" />
-              <LinkDropdownItem href="" title="Client 3" />
-            </LinkDropdown>
-          </NavigationGroup>
-          <NavigationGroup>
-            <NavigationFolder />
-          </NavigationGroup>
+    <DropdownProvider>
+      <PageSidebar>
+        <div className="px-6">
+          <SearchInput isCommand />
+          <div className="mt-8">
+            <h1 className="text-2xl font-medium">Your Chats</h1>
+            <NavigationGroup title="Recent">
+              {navigationList.map((nav, index) => {
+                return (
+                  <NavigationLink
+                    key={index}
+                    title={nav.title}
+                    time={nav.time}
+                    href={nav.url}
+                  />
+                );
+              })}
+            </NavigationGroup>
+            <NavigationGroup title="Folders">
+              <LinkDropdown
+                title="Budget 2024"
+                iconColor="bg-accent-yellow"
+                isLock
+              >
+                <LinkDropdownItem href="" title="Budget 1" />
+                <LinkDropdownItem href="" title="Budget 2" />
+                <LinkDropdownItem href="" title="Budget 3" />
+              </LinkDropdown>
+              <LinkDropdown title="Management" iconColor="bg-accent-dark-blue">
+                <LinkDropdownItem href="" title="Programmers" />
+                <LinkDropdownItem href="" title="UI/UX" />
+              </LinkDropdown>
+              <LinkDropdown title="Clients">
+                <LinkDropdownItem href="" title="Client 1" />
+                <LinkDropdownItem href="" title="Client 2" />
+                <LinkDropdownItem href="" title="Client 3" />
+              </LinkDropdown>
+            </NavigationGroup>
+            <NavigationGroup>
+              <NavigationFolder />
+            </NavigationGroup>
+          </div>
         </div>
-      </div>
-      <div className="mt-auto text-center py-6 border-t-2  ">
-        <LinkBtn href="/chat/new" className="mx-auto">
-          <PlusCircle size={24} /> New chat
-        </LinkBtn>
-      </div>
-    </PageSidebar>
+        <div className="mt-auto text-center py-6 border-t-2  ">
+          <LinkBtn href="/chat/new" className="mx-auto">
+            <PlusCircle size={24} /> New chat
+          </LinkBtn>
+        </div>
+      </PageSidebar>
+    </DropdownProvider>
   );
 };

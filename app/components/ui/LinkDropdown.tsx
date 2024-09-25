@@ -1,10 +1,13 @@
 "use client"
 
-import {AnimatePresence, motion} from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown, Circle, Folder, Lock } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React, { ComponentProps, PropsWithChildren, useState } from 'react';
+import React, { ComponentProps, PropsWithChildren } from 'react';
+
+import { useDropdownContext } from '@/app/context/DropdownContext';
+
 
 interface LinkDropdownProps {
   title: string;
@@ -16,10 +19,16 @@ export const LinkDropdown = (
   props: PropsWithChildren<LinkDropdownProps>
 ) => {
   const { iconColor, title, isLock, children } = props;
-  const [isOpen, setIsOpen] = useState(false);
+  const { openDropdown, setOpenDropdown } = useDropdownContext();
+
+  const isOpen = openDropdown === title;
 
   const toggleNav = () => {
-    setIsOpen((open) => !open);
+    if (isOpen) {
+      setOpenDropdown(null);
+    } else {
+      setOpenDropdown(title);
+    }
   };
 
   return (
