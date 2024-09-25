@@ -11,12 +11,7 @@ import { MessageInput } from "../chat/MessageInput";
 import { Navigation } from "../chat/Navigation";
 import { Header } from "../ui/Header";
 
-interface ChatLayoutProps {
-  chatTitle?: string;
-}
-
-export const ChatLayout = (props: React.PropsWithChildren<ChatLayoutProps>) => {
-  const { chatTitle, children } = props;
+export const ChatLayout = ({ children }: React.PropsWithChildren) => {
   const { isDetailsOpen } = useMessageDetails();
   return (
     <section className="flex w-full h-full">
@@ -26,7 +21,7 @@ export const ChatLayout = (props: React.PropsWithChildren<ChatLayoutProps>) => {
         <div className="flex flex-col h-[calc(100vh-72px)] pr-3">
           <div className="flex gap-3">
             <div className="bg-[#F1E8F5] rounded-xl p-[10px] h-[calc(100vh-160px)] overflow-auto relative flex-1 w-auto">
-              <HeaderChat title={chatTitle}/>
+              <HeaderChat />
               {children}
             </div>
             <AnimatePresence>{isDetailsOpen && <Details />}</AnimatePresence>
